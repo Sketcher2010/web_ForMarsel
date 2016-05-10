@@ -1,0 +1,100 @@
+*{margin: 0px; padding: 0px;
+    font-family: 'Roboto', sans-serif !important;}
+.container {
+    position: absolute;
+    right: 0px;
+    bottom: 70px;
+    top: 100px;
+    left: 0px;
+    overflow: hidden;
+    background: url("https://pp.vk.me/c629630/v629630935/1b11e/WtQ9-fDXFdI.jpg");
+}
+#container {
+    background: rgba(23, 23, 23, 0.75);
+    margin: 0 auto;
+}
+#header {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    left: 0px;
+    height: 60px;
+    overflow: hidden;
+    padding: 20px;
+    background: #000;
+}
+#footer {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: 70px;
+    overflow: hidden;
+    text-align: center;
+    background-color: #f2f2f2;
+}
+.postContainer {
+    background: #fff;
+    max-width: 1030px;
+    padding: 40px 20px;
+    margin: auto;
+    height: auto;
+    border: 1px solid rgb(238, 239, 239);
+}
+.insta-photo {
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+}
+.insta-author {
+    width: 350px;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+}
+.insta-author .left {
+    width: 40px;
+    margin-right: 12px;
+    float: left;
+}
+.insta-author .like-count {
+    font-size: 12pt;
+    color: #989898;
+}
+.icon-heart {
+    width: 13px;
+    height: 11px;
+    display: inline-block;
+    background-image: url(http://selet.biz/bitrix/templates/.default/static/pic/icons/icon-insta-like.png);
+    margin-right: 3px;
+}
+.insta-author .right {
+    display: inline-block;
+}
+.insta-author .right a {
+    font-size: 20px;
+    color: #1596d4;
+    text-decoration: none;
+}
+.insta-author p {
+    padding: 10px 8px;
+    font-size: 20px;
+    color: #333;
+}
+.logo {
+    background: url("http://oicyouthforum.tatar/icons/logo.png");
+    background-size: contain;
+    width: 80px;
+    height: 80px;
+    float: left;
+    margin-top: -7px;
+}
+.thatHashTag {
+    color: dodgerblue;
+}
+.sp_cop {
+    color: #b7b3b3;
+    padding-top: 29px;
+    padding-right: 30px;
+    float: right;
+}
