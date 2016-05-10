@@ -20,7 +20,6 @@ function startScroll() {
             currentScrollId = 0;
         }
         $(".container").scrollTo($("#post"+currentScrollId), 500);
-        console.log(currentScrollId);
         currentScrollId++;
     }, 5000);
 }
@@ -55,7 +54,6 @@ function getData(next_url, tag) {
             for(var i = result.data.length-1; i>=0; i--) {
                 var obj = result.data[i];
                 if(parseInt(created_time) < parseInt(obj.created_time)) {
-                    console.log("last: "+created_time+"; now: "+obj.created_time);
                     created_time = obj.created_time;
                     var txt = obj.caption["text"];
                     var height = screen.height - 170;
