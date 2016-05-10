@@ -1,14 +1,15 @@
 var next_url = "";
 var created_time = "0";
+var isScrolled = false;
+var currentScrollId;
+var interval = "";
 $( document ).ready(function() {
+    currentScrollId = $(".post").length;
     next_url = getData(next_url, "selet");
     setInterval(function(){
         next_url = getData(next_url, "selet");
-    }, 10000);
+    }, 1000);
 });
-var isScrolled = false;
-var currentScrollId = 0;
-var interval = "";
 
 function startScroll() {
     if(isScrolled)
@@ -16,16 +17,16 @@ function startScroll() {
     else
         isScrolled = true;
     interval = setInterval(function () {
-        if(currentScrollId >= $("#container").children().length){
-            currentScrollId = 0;
+        if(currentScrollId == 0){
+            currentScrollId = $(".post").length;
         }
         $(".container").scrollTo($("#post"+currentScrollId), 500);
-        currentScrollId++;
+        currentScrollId--;
     }, 5000);
 }
 function resetScroll() {
     isScrolled = false;
-    currentScrollId = 0;
+    currentScrollId = $(".post").length;
     clearInterval(interval);
     startScroll();
 }
@@ -57,8 +58,8 @@ function getData(next_url, tag) {
                     created_time = obj.created_time;
                     var txt = obj.caption["text"];
                     var height = screen.height - 170;
-                    $("#container").html(
-                        "<div id='post" + (result.data.length-$(".post").length-1) + "' class='post'><div class='postContainer' id='postContainer" + (result.data.length-$(".post").length-1) + "'>" +
+                    $("#container").after(
+                        "<div id='post" + $(".post").length + "' class='post'><div class='postContainer' id='postContainer" + $(".post").length + "'>" +
                         "<img src='" + obj.images["standard_resolution"]["url"] + "' class='insta-photo'>" +
                         "<div class=\"insta-author\">\
                             <div class=\"left\">\
@@ -71,8 +72,8 @@ function getData(next_url, tag) {
                                 </div>\
                             <p>" + txt.replace(/(\#(.*?)[^\s]+)/gi, '<span class="thatHashTag">$1</span>') + "</p>\
                             </div></div>\
-                        </div>"+$("#container").html());
-                    $("#post" + (result.data.length-$(".post").length-1)).css({"padding-top": ((height - $("#postContainer" + (result.data.length-$(".post").length-1)).height()) / 2) + "px"});
+                        </div>");
+                    $("#post" + $(".post").length).css({"padding-top": ((height - $("#postContainer" + $(".post").length).height()) / 2) + "px"});
                     resetScroll();
                 }
             }
@@ -80,7 +81,7 @@ function getData(next_url, tag) {
             if(!isScrolled) {
                 startScroll();
             }
-            $(".post").css({"height": height - (height - $("#postContainer" + ($(".post").length)).height()) / 16 + "px"});
+            $(".post").css({"height": screen.height+"px"});
         },
         error: function(){console.log('Error!');}
     });
