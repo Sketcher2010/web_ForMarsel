@@ -57,9 +57,9 @@ function getData(next_url, tag) {
                 if(parseInt(created_time) < parseInt(obj.created_time)) {
                     created_time = obj.created_time;
                     var txt = obj.caption["text"];
-                    var height = screen.height - 170;
+                    var height = screen.height - 100;
                     $("#container").after(
-                        "<div id='post" + $(".post").length + "' class='post'><div class='postContainer' id='postContainer" + $(".post").length + "'>" +
+                        "<div id='post" + $(".post").length + "' class='post'><div id='marginPost"+$(".post").length+"'></div><div class='postContainer' id='postContainer" + $(".post").length + "'>" +
                         "<img src='" + obj.images["standard_resolution"]["url"] + "' class='insta-photo'>" +
                         "<div class=\"insta-author\">\
                             <div class=\"left\">\
@@ -73,13 +73,18 @@ function getData(next_url, tag) {
                             <p>" + txt.replace(/(\#(.*?)[^\s]+)/gi, '<span class="thatHashTag">$1</span>') + "</p>\
                             </div></div>\
                         </div>");
-                    $("#post" + $(".post").length).css({"padding-top": ((height - $("#postContainer" + $(".post").length).height()) / 2) + "px"});
+                    // $("#marginPost" + $(".post").length).css({"height": (height-$("#postContainer" + $(".post").length).height())/2+"px"});
                     resetScroll();
                 }
             }
             res = result.pagination["next_url"];
             if(!isScrolled) {
                 startScroll();
+            }
+            for(var i = result.data.length-1; i>=0; i--) {
+                // $("#marginPost" + i).height(screen.height-$("#postContainer" + i).height);
+                // console.log((screen.height-100-$("#postContainer" + i).height())/2);
+                $("#marginPost" + i).css({"height": (screen.height-260-$("#postContainer" + i).height())/2+"px"});
             }
             $(".post").css({"height": screen.height+"px"});
         },

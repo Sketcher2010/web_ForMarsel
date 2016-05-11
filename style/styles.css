@@ -10,7 +10,6 @@
     background: url("https://pp.vk.me/c629630/v629630935/1b11e/WtQ9-fDXFdI.jpg");
 }
 #container {
-    background: rgba(23, 23, 23, 0.75);
     margin: 0 auto;
 }
 #header {
@@ -35,6 +34,7 @@
 }
 .post {
     overflow: hidden;
+    background: rgba(23, 23, 23, 0.75);
 }
 .postContainer {
     background: #fff;
