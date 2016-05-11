@@ -3,14 +3,30 @@ var created_time = "0";
 var isScrolled = false;
 var currentScrollId;
 var interval = "";
+var vars = getUrlVars();
 $( document ).ready(function() {
+    if(vars["tag"] == undefined) {
+        $("body").html("<form><input type='text' placeholder='Tag name' name='tag'><input type='submit'></form>");
+        document.close();
+    }
     currentScrollId = $(".post").length;
-    next_url = getData(next_url, "selet");
+    next_url = getData(next_url, vars["tag"]);
     setInterval(function(){
-        next_url = getData(next_url, "selet");
-    }, 1000);
+        next_url = getData(next_url, vars["tag"]);
+    }, 500);
 });
-
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
 function startScroll() {
     if(isScrolled)
         return 0;
@@ -18,7 +34,7 @@ function startScroll() {
         isScrolled = true;
     interval = setInterval(function () {
         if(currentScrollId == 0){
-            currentScrollId = $(".post").length;
+            currentScrollId = $(".post").length-1;
         }
         $(".container").scrollTo($("#post"+currentScrollId), 500);
         currentScrollId--;
@@ -26,7 +42,7 @@ function startScroll() {
 }
 function resetScroll() {
     isScrolled = false;
-    currentScrollId = $(".post").length;
+    currentScrollId = $(".post").length-1;
     clearInterval(interval);
     startScroll();
 }
@@ -34,7 +50,7 @@ function resetScroll() {
 function getData(next_url, tag) {
     var config = {};
     config.Beget = {
-        apiKey: '1545509780.b63e58a.7f89fc42de1042e9b3797c88aa2286df', // Сюда нужно вставить какой-нибудь публичный токен для работы с instagram. (пока стоит мой личный)
+        apiKey: '1545509780.b63e58a.7f89fc42de1042e9b3797c88aa2286df',
         apiHost: 'https://api.instagram.com/'
     };
     var res = "";
@@ -81,7 +97,7 @@ function getData(next_url, tag) {
             if(!isScrolled) {
                 startScroll();
             }
-            for(var i = result.data.length-1; i>=0; i--) {
+            for(var i = $(".post").length-1; i>=0; i--) {
                 // $("#marginPost" + i).height(screen.height-$("#postContainer" + i).height);
                 // console.log((screen.height-100-$("#postContainer" + i).height())/2);
                 $("#marginPost" + i).css({"height": (screen.height-260-$("#postContainer" + i).height())/2+"px"});
