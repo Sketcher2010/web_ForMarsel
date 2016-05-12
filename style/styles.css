@@ -1,5 +1,8 @@
 *{margin: 0px; padding: 0px;
     font-family: 'Roboto', sans-serif !important;}
+a {
+    text-decoration: none;
+}
 .container {
     position: absolute;
     right: 0px;
