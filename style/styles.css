@@ -10,10 +10,8 @@ a {
     top: 100px;
     left: 0px;
     overflow: hidden;
-    background: url("https://pp.vk.me/c629630/v629630935/1b11e/WtQ9-fDXFdI.jpg");
-}
-#container {
-    margin: 0 auto;
+    background: url("../images/background.gif");
+    text-align: center;
 }
 #header {
     position: absolute;
@@ -37,11 +35,13 @@ a {
 }
 .post {
     overflow: hidden;
-    background: rgba(23, 23, 23, 0.75);
+    display: inline-block;
+    width: 400px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .postContainer {
     background: #fff;
-    max-width: 1030px;
     padding: 40px 20px;
     max-height: 100%;
     overflow: hidden;
@@ -49,13 +49,11 @@ a {
     height: auto;
 }
 .insta-photo {
-    display: inline-block;
     padding: 10px;
     margin: 10px;
 }
 .insta-author {
     width: 350px;
-    display: inline-block;
     overflow: hidden;
     vertical-align: top;
 }
