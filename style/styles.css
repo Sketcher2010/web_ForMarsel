@@ -10,7 +10,8 @@ a {
     top: 100px;
     left: 0px;
     overflow: hidden;
-    background: url("../images/background.gif");
+    /*background: url("../images/background.gif");*/
+    background: #ffffff;
     text-align: center;
 }
 #header {

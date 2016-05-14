@@ -38,7 +38,7 @@ function startScroll() {
             currentScrollId = totalCount;
         }
         if(totalCount > countNow) {
-            currentScrollId = totalCount;
+            currentScrollId = totalCount-1;
             countNow = totalCount;
         }
         $(".container").scrollTo($("#post"+currentScrollId), 500);
@@ -57,7 +57,7 @@ function resetScroll() {
 function getData(next_url, tag) {
     var config = {};
     config.Beget = {
-        apiKey: '1681582268.b63e58a.66c3da1c478747fd8fc518b913e73d08',
+        apiKey: '1545509780.b63e58a.7f89fc42de1042e9b3797c88aa2286df',
         apiHost: 'https://api.instagram.com/'
     };
     var res = "";
